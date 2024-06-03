@@ -11,7 +11,6 @@ send_post_request() {
     local url="$1"
     shift
 
-    # printf "POST -> $credentials_dir\n"
     curl -s -X POST "$url" -d "$@" -H "Content-Type: application/x-www-form-urlencoded"
 }
 
@@ -128,13 +127,6 @@ main () {
   # Check if required arguments are provided
   if [ -z "$login" ] || [ -z "$camera_id" ] || [ -z "$format" ]; then
     echo "Usage: $0 --login=<login> --camera_id=<camera_id> [--format=<format>] [--light_stream=<light_stream>]"
-    exit 1
-  fi
-
-
-  # Check if required arguments are provided
-  if [ -z "$login" ]; then
-    echo "no login"
     exit 1
   fi
 
